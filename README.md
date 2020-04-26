@@ -1,0 +1,1 @@
+# takapy_blog
