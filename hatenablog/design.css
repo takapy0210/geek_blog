@@ -1,0 +1,357 @@
+/* <system section="theme" selected="8599973812270629022"> */
+@import "https://blog.hatena.ne.jp/-/theme/8599973812270629022.css";
+
+/* ブログタイトル文字サイズ変更 */
+@media screen and (max-width: 640px){
+  #blog-title #title {
+      font-size: 20px !important;
+  }
+}
+
+/* タイトル下のブログ説明部分 (設定 > 基本設定 > ブログの説明) */
+h2#blog-description {
+    font-size: 12px !important;  /* 文字サイズ変更 */
+    margin: 1px;  /* 上下左右に余白追加 */
+}
+
+/* 【タブレット、PC限定】 */
+@media screen and (min-width:641px) {
+    h2#blog-description {
+        font-size: 18px !important;  /* 文字サイズ変更 */
+        margin: 5px;  /* 上下左右に余白追加 */
+    }
+}
+
+/* </system> */
+
+/* ### ヘッダーの背景色 ### */
+#blog-title{
+  background: #f8f8ff !important;
+}
+/* ### ブログタイトルの文字色 ### */
+#title a{
+  color: #カラーコード !important; 
+}
+/* ### ブログ説明の文字色 ### */
+#blog-description{
+  color:# カラーコード !important; 
+}
+
+/*
+枠 (div) の設定 (画面幅、境界線、背景色)
+-------------------------------------------------------*/
+/* 【タブレット、PC限定】 */
+@media screen and (min-width:641px) {
+    /* 左右の余白を削除 */
+    #container {
+        width: 80%;  /* 本文エリアとサイドバー含めて画面いっぱいに広げる */
+    }
+
+    /* 本文エリア全体 */
+    #main {
+        background-color: #ffffff;  /* 本文エリアの背景色 */
+        /*border: 1px solid #bde6f2;*/  /* 本文エリアの枠線 */
+        border-radius: 5px; /* 角を丸くする */
+        float: left;  /* サイドバーをfloat leftにするため */
+        margin: 30px 2% 0 8%;
+        padding: 30px;  /* 本文エリアの文字と枠線の間の余白 */
+        width: 50%; /* 画面幅50% */
+    }
+
+    /* サイドバー */
+    #box2 {
+        float: left;  /* 本文エリアの方に詰める */
+        margin: 30px 3% 0 2%;
+        width: 22%; /* 画面幅22% 画面拡大しても崩れにくいよう余裕持たせてます */
+    }
+}
+
+/*
+基本的なフォント設定 (見出しの設定は、「記事エリアの設定」で行う)
+-------------------------------------------------------*/
+/* 全体のフォントファミリー指定 */
+/* ★ WEBフォントの追加設定 */
+.entry-content, .entry-title, body {
+    font-family: 'Noto Sans', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', メイリオ, Meiryo, sans-serif;
+    /*letter-spacing: 0.0005em;*/ /* 字間を0.05字分空けて読みやすくする */
+}
+
+/*
+見出しの設定
+-------------------------------------------------------*/
+/* 記事タイトルのフォント */
+h1.entry-title a {
+    font-size: 15px;
+}
+
+/* 【タブレット、PC限定】 */
+@media screen and (min-width:641px) {
+    h1.entry-title a {
+    font-size: 22px;
+    }
+}
+
+/* 見出し1の設定 */
+.entry-content h1 {
+    padding: 0.6em 0.6em;/*上下 左右の余白*/
+    border-left: solid 2.5px #ffa8a8;/*左線*/
+    font-size: 22px;
+    background: #f9fcff;/*背景色*/
+    /*padding: 10px 20px 15px 20px;*/
+}
+
+/* 見出し2の設定 */
+.entry-content h2 {
+    padding: 0.2em 0.4em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-bottom: solid 1.5px #d3d3d3;
+    font-size: 20px;
+}
+
+/* 見出し3の設定 */
+.entry-content h3 {
+    padding: 0.2em 0.2em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    font-size: 18px;
+}
+
+/*
+強調文字列部分の設定 (マークダウンでいう右記の部分： ** 文字列 **)
+-------------------------------------------------------*/
+/* 蛍光ペンの設定 */
+/* (補足) rgbaの4番目の引数は透明度を表す。0で透明、1で完全に塗りつぶす。transparentは一部ブラウザで黒と解釈されるので使わない */
+/* (補足) 60%の数値を両方増やすと蛍光ペンが細くなる。両方減らすと太くなる */
+/* (補足) 前半を20%、後半を80%とすると、上から20%の位置を透明、80%の位置を色付きとし、間はグラデーションになる */
+/* ■蛍光ペンのデザイン：https://naifix.com/strong-css-sample/ */
+.entry-content strong {
+    background: linear-gradient(rgba(246, 210, 139, 0) 60%, rgba(246, 210, 139, 1) 60%);  
+    border-radius: 2px; /* 角を丸める */
+}
+
+
+/* 行間の設定 */
+/*.entry-content p {margin:0.1}*/
+.entry-content p{ 
+line-height: 1.8em; /* 行間の幅調整*/
+letter-spacing:0.4pt; /* 文字の間隔調整*/
+/*font-size:15px;*/
+}  
+
+/*
+目次の設定
+-------------------------------------------------------*/
+/* 見出し1に対応する目次の余白調整、および自動採番用の変数セット */
+ul.table-of-contents > li {
+    margin-top: 0.1em;
+    list-style-type: none;
+    counter-increment: mokuji-1; /* mokuji-1という変数に1を足す */
+    counter-reset: mokuji-2; /* mokuji-2という変数の値を0に戻す */
+    line-height:132%;
+}
+
+/* 見出し1に対応する目次の自動採番 */
+ul.table-of-contents > li::before{
+    content: counter(mokuji-1) ". "; /* 文字列挿入。"1. " のような形式 */
+}
+
+/* 見出し2に対応する目次の余白調整、および自動採番用の変数セット */
+ul.table-of-contents ul > li {
+    list-style-type: none;
+    margin-top: 0;
+    counter-increment: mokuji-2;
+    line-height:132%;
+}
+
+/* 見出し2に対応する目次の自動採番 */
+ul.table-of-contents ul > li::before {
+    content: counter(mokuji-1) "." counter(mokuji-2) ". "; /* 文字列挿入。"1.1. " のような形式 */
+}
+
+/* 見出し3以降に対応する目次を非表示にする */
+ul.table-of-contents ul ul { 
+    display: none;
+    line-height:132%;
+}
+
+.entry-content .table-of-contents {
+    /*margin: 2em 2em;*/ /*目次上下の余白*/
+    padding: 3em 0 2em 2em; /*目次下内部余白 上,右,下,左*/
+    /*margin: 0 0 0 3.5em;*/ /*左側余白*/
+    /*padding: 0.01em 0 0 0 !important;*/ /*行間余白*/
+    /*border: 1px solid #ddd;*/ /*枠線のスタイル*/
+    /*background-color: #fff;*/ /*目次内背景色*/
+    /*font-size: 0.95em;*/ /*文字サイズ*/
+    /*font-weight: normal;*/ /*文字太さ*/
+    border-radius: 5px; /*角を丸める*/
+}
+
+ul.table-of-contents > li a:link{
+  color:#ad8383; /*色はここを変更*/
+　text-decoration: none;
+}
+
+.entry-content .table-of-contents a:link{
+　color:#ad8383; /*色はここを変更*/
+　text-decoration: none;
+}
+
+ul.table-of-contents > li a:visited{
+  color:#8c6a6a; /*色はここを変更*/
+}
+
+.entry-content .table-of-contents a:visited{
+　color: #8c6a6a; /*色はここを変更*/
+}
+
+.entry-content .table-of-contents a:hover{
+　text-decoration:underline; /*下線をつける*/
+}
+
+/*
+ソースコードのシンタックスハイライト (Syntax Highlighting) の書式
+-------------------------------------------------------*/
+/* 文字サイズ変更 */
+.entry-content pre.code {
+   font-size:90%;
+   line-height:150%;
+}
+
+/* コードの背景色変更 */
+.entry-content pre.code {
+    background-color: #3F3F3F;
+    color: #DCDCDC;
+}
+/*
+pre.code ol{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+pre.code .code-list{
+  border-left: 1px solid #999999; *縦線*
+  padding-left:6px;
+}
+pre.code .code-list:nth-child(2n+1) {
+    background-color: #424242; *奇数行の背景色*
+}
+*/
+.synSpecial { color: #cc9393; }
+.synType { color: #E3CEAB; }
+.synComment { color: #7A987A; }
+.synPreProc { color: #8c8cb4; }
+.synIdentifier { color: #6e96be; }
+.synConstant { color: #cc9393; }
+.synStatement { color: #efc986; }
+
+
+/*
+追尾する目次
+-------------------------------------------------------*/
+#stoc-module {
+  backface-visibility: hidden;
+}
+#stoc-module.tracking {
+  margin-bottom: 0;
+}
+#stoc-module.fixed {
+  position: fixed;
+}
+#stoc-module.absolute {
+  position: absolute;
+}
+#stoc-module.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+#stoc-module.fade-in {
+  animation: fadeIn 300ms;
+}
+@keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+#stoc {
+  overflow-y: auto;
+}
+#stoc.shadow {
+  /* Shadows */
+  background:
+    radial-gradient(farthest-side at top, rgba(0,0,0,.17), transparent) top / 100% 11px,
+    radial-gradient(farthest-side at bottom, rgba(0,0,0,.17), transparent) bottom / 100% 11px;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+#stoc ol {
+  margin: 0;
+  padding: 0 0 0 1em;
+  list-style-type: none;
+}
+#stoc > ol {
+  padding-left: 0;
+}
+#stoc.shadow > ol {
+  /* Shadow covers */
+  background:
+    linear-gradient(#fff 30%, transparent) top / 100% 40px,
+    linear-gradient(transparent, #fff 70%) bottom / 100% 40px;
+  background-repeat: no-repeat;
+  background-attachment: local;
+}
+#stoc a {
+  padding: 2px 2px 2px 6px;
+  display: block;
+  text-decoration: none;
+}
+#stoc:not(.touch) a:hover {
+  background-color: rgba(0,0,0,.04);
+  text-decoration: underline;
+}
+#stoc .active {
+  background-color: rgba(0,0,0,.04);
+}
+
+#stoc::-webkit-scrollbar {
+  width: 8px;
+  background: #ececec;
+}
+#stoc::-webkit-scrollbar-button {
+  display: none;
+}
+#stoc::-webkit-scrollbar-thumb {
+  background: #b1b1b1;
+}
+
+
+/*
+Categoryをタイル表示に変更（Innocent）
+うまく動かない
+-------------------------------------------------------*/
+/*
+.hatena-module-category .hatena-urllist {
+ margin: 0 0 -6px;
+ padding: 0;
+}
+.hatena-module-category .hatena-urllist li::before {
+ content: none;
+}
+.hatena-module-category .hatena-urllist li {
+ border-top: 0;
+ display: block;
+ float: left;
+ margin: 0 6px 6px 0;
+ padding: 0;
+}
+.hatena-module-category .hatena-urllist li a {
+ border: 1px solid #e6e6e6;
+ border-radius: 2px;
+ display: block;
+ font-size: 0.8667em;
+ line-height: 32px;
+ padding: 0 12px;
+}
+.hatena-module-category .hatena-urllist li a:hover {
+ background-color: #f6f6f6;
+ color: #333;
+}
+*/
