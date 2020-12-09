@@ -3,9 +3,9 @@
 
 /* ブログタイトル文字サイズ変更 */
 @media screen and (max-width: 640px){
-  #blog-title #title {
-      font-size: 20px !important;
-  }
+    #blog-title #title {
+        font-size: 20px !important;
+    }
 }
 
 /* タイトル下のブログ説明部分 (設定 > 基本設定 > ブログの説明) */
@@ -30,11 +30,11 @@ h2#blog-description {
 }
 /* ### ブログタイトルの文字色 ### */
 #title a{
-  color: #カラーコード !important; 
+  color: #カラーコード !important;
 }
 /* ### ブログ説明の文字色 ### */
 #blog-description{
-  color:# カラーコード !important; 
+  color: #カラーコード !important;
 }
 
 /*
