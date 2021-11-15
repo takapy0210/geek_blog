@@ -17,6 +17,7 @@ logger = logging.getLogger()
 
 class LoadDataset(luigi.Task):
     """データセットをロードするクラス"""
+    task_namespace = 'titanic_tasks'
 
     def output(self):
         # return luigi.LocalTarget("data/titanic.csv")  # csvで出力する場合
@@ -39,6 +40,7 @@ class LoadDataset(luigi.Task):
 @requires(LoadDataset)
 class Processing(luigi.Task):
     """データの加工を行う"""
+    task_namespace = 'titanic_tasks'
 
     def output(self):
         # return luigi.LocalTarget("data/processing_titanic.csv")  # csvで出力する場合
@@ -110,6 +112,7 @@ class Processing(luigi.Task):
 @requires(Processing)
 class TrainTestSplit(luigi.Task):
     """データを学習データと検証データに分割する"""
+    task_namespace = 'titanic_tasks'
 
     def output(self):
         return [luigi.LocalTarget("data/processing_titanic_train.pkl", format=luigi.format.Nop),
@@ -134,6 +137,7 @@ class TrainTestSplit(luigi.Task):
 @requires(TrainTestSplit)
 class Training(luigi.Task):
     """学習"""
+    task_namespace = 'titanic_tasks'
 
     def output(self):
         return luigi.LocalTarget("model/random_forest.model", format=luigi.format.Nop)
@@ -159,6 +163,9 @@ class Training(luigi.Task):
 
 @requires(TrainTestSplit, Training)
 class Predict(luigi.Task):
+    """推論"""
+    task_namespace = 'titanic_tasks'
+
     def output(self):
         return luigi.LocalTarget("data/predict_data.csv")
 
@@ -189,6 +196,7 @@ class Predict(luigi.Task):
 
 @requires(Predict)
 class MyInvokerTask(luigi.WrapperTask):
+    task_namespace = 'titanic_tasks'
     pass
 
 
@@ -198,3 +206,4 @@ if __name__ == '__main__':
     luigi.configuration.LuigiConfigParser.add_config_path('./luigi.cfg')
     # 実行
     luigi.build([MyInvokerTask()], local_scheduler=True)
+    # luigi.build([MyInvokerTask()], local_scheduler=False)  # ブラウザからチェックしたい場合はこちら
